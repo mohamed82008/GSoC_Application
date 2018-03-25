@@ -6,7 +6,7 @@
 \begin{titlepage}
 \title{
 	\textbf{GSoC Application} \\~\\
-	Fast Extremal Eigenvalue Solvers\\
+	Fast Extremal Eigenvalue Iterative Solver with Preconditioners\\
 }
 \author{Mohamed Tarek Mohamed}
 \date{\today}
@@ -17,19 +17,20 @@
 
 \section{About Me}
 
-\textbf{Name} Mohamed Tarek Mohamed \\~\\
+\bigskip
+\bigskip
+\textbf{Name} Mohamed Tarek Mohamed (Github: mohamed82008) \\~\\
 \textbf{Location} Canberra, ACT, Australia \\~\\
 \textbf{Timezone} UTC+10 (April-September) and UTC+11 (October-March) \\~\\
 \textbf{University} University of New South Wales, Canberra \\~\\
 \textbf{Degree} PhD in Computer Science \\~\\
 \textbf{Research Area} Topology optimization \\~\\
 \textbf{Email} mohamed82008@gmail.com \\~\\
-\textbf{Github Username} mohamed82008 \\~\\ 
 \textbf{GSoC Organization} NumFOCUS \\~\\
 \textbf{Programming Language} Julia \\~\\
 \textbf{GSoC Mentor} Harmen Stoppels (Github: haampie) \\~\\
 
-I am a 23 year old, first year PhD student in Computer Science, originally from Egypt. My field of research proudly sits in the intersection of mechanical engineering, computational mathematics and optimization theory. I have a Master degree in Industrial and Systems Engineering, and a Bachelor degree in Mechanical Engineering, and I am a passionate computational mathematics reader. I have academic programming experience using Java and Python but my favourite language of all is the Julia programming language which I will be using in this project, should I get accepted. I have experience in open source development using Julia as can be seen from my Github account \footnote{https://github.com/mohamed82008}.
+I am a 23 year old, first year PhD student in Computer Science, originally from Egypt. My field of research proudly sits in the intersection of mechanical engineering, computational mathematics and optimization theory. I have a Master degree in Industrial and Systems Engineering, and a Bachelor degree in Mechanical Engineering, and I am a passionate computational mathematics reader. I have academic programming experience in Java and Python but my favourite language of all is the Julia programming language which I will be using in this project, should I get accepted. I have experience in open source development using Julia as can be seen from my Github account \footnote{https://github.com/mohamed82008}. I also got permission from my PhD supervisor to commit the time necessary for GSoC during weekdays since this project overlaps with my research interest. Additionally, I will also be working on this project during weekends.
 
 \section{Introduction}
 
@@ -43,11 +44,46 @@ In this project, under the mentorship of Harmen Stoppels who is one of the contr
 
 After the package is completed and well optimized, it will then be interfaced in IterativeSolvers.jl to provide an easy and fast way to find the $k$ extremal eigenvalues and eigenvectors for sparse matrices $\bm{A}$ and $\bm{B}$ from IterativeSolvers.jl. IterativeSolvers.jl hosts a number of iterative solvers for solving systems of equations involving huge sparse matrices, but it is still lacking in eigenvalue algorithms.
 
-Another goal of this project is to develop a package that defines a number of common preconditioners which are used to accelerate iterative solvers for solving systems of equations or eigenvalue problems. Of particular interest are the incomplete Cholesky and the algebraic multigrid (AMG) preconditioners which will be defined, wrapped and/or extended. Some variants of the AMG preconditioner already exist in AMG.jl \footnote{https://github.com/ranjanan/AMG.jl}. Moreover, RestrictProlong.jl \footnote{https://github.com/timholy/RestrictProlong.jl} allows an efficient definition of the "restrict" and "prolong" operators of the AMG preconditioner. However, AMG.jl lacks a number of important features. More specifically, in this part of the project, the Cleary-Luby-Jones-Plassmann (CLJP) coarsening algorithm will be implemented. The CLJP coarsening is known to be more amenable to distributed-memory parallelism as discussed in \cite{Henson2002}. More features from the same paper will also be added if time permits.
+Another goal of this project is to develop a package that defines a number of common preconditioners which are used to accelerate iterative solvers for solving systems of equations or eigenvalue problems. Of particular interest are the incomplete Cholesky and the algebraic multigrid (AMG) preconditioners which will be defined, wrapped and/or extended. Some variants of the AMG preconditioner already exist in AMG.jl \footnote{https://github.com/ranjanan/AMG.jl}. Moreover, RestrictProlong.jl \footnote{https://github.com/timholy/RestrictProlong.jl} allows an efficient definition of the "restrict" and "prolong" operators of the AMG preconditioner. However, AMG.jl lacks a number of important features. More specifically, in this part of the project, the Cleary-Luby-Jones-Plassmann (CLJP) coarsening algorithm will be implemented. The CLJP coarsening is known to be more amenable to distributed-memory parallelism as discussed in \cite{Henson2002}. More features from the same paper will also be added if time permits. In particular, a parallel AMG package will be attempted including parallel Ruge-Stuben, CLJP and hybrid algorithms from \cite{Henson2002}.
 
 Testing of the developed tools will be performed using buckling problems from structural mechanics defined using JuAFEM.jl \footnote{https://github.com/KristofferC/JuAFEM.jl}. I have experience in using JuAFEM.jl and I have thoroughly read and modified it for supporting arbitrary precision in my forked version \footnote{https://github.com/mohamed82008/JuAFEM.jl}. The final test matrices and benchmarks will then be reported on a Github repository.
 
 Finally, since the release of Julia v1.0 is likely to overlap the GSoC project's period, the packages developed will be developed in a way compatible with both Julia v0.6 and v1.0. Compat.jl \footnote{https://github.com/JuliaLang/Compat.jl}, top-level code specialization and/or completely different Github branches of the packages will be used, as seen fit on a case-by-case basis.
+
+\section{Deliverables and Timeline}
+
+\begin{center}
+ \begin{tabular}{||p{12cm} | c||}
+ \hline
+ \textbf{Deliverable} & \textbf{Duration} \\ [0.5ex] 
+ \hline\hline
+ 1. Efficient LOBPCG.jl with documentation and basic tests & 2 weeks \\ 
+ 2. Interface for LOBPCG.jl and JacobiDavidson.jl in IterativeSolvers.jl & 1 week \\
+ 3. Testsuite for sparse eigenvalue problems and benchmark results & 1 week \\
+ \hline
+ \hline
+  & \textbf{4 weeks} \\
+ \hline
+ \hline
+ 4. Preconditioners.jl providing diagonal, incomplete Cholesky and AMG preconditioners & 2 weeks \\
+ 5. Interface and document Preconditioners.jl in IterativeSolvers.jl & 1 week \\
+ 6. Benchmark preconditioners with LOBPCG & 1 week \\ [1ex] 
+ \hline
+ \hline
+  & \textbf{4 weeks} \\
+ \hline
+ \hline
+ 7. Julia v1.0 compatible versions of the above deliverables & 1 week \\
+ 8. Develop and test parallel CLJP coarsening AMG & 2 weeks \\ 
+ 9. Develop and test parallel RS coarsening AMG & 2 weeks \\
+ \hline
+ \hline
+  & \textbf{5 weeks} \\
+ \hline
+ \hline
+\end{tabular}
+\end{center}
+
 
 
 \def\bibfont{\footnotesize}
