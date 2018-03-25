@@ -1,0 +1,15 @@
+\begin{thebibliography}{1}
+
+\bibitem{Henson2002}
+Van~Emden Henson and Ulrike~Meier Yang.
+\newblock {BoomerAMG: A parallel algebraic multigrid solver and
+  preconditioner}.
+\newblock {\em Applied Numerical Mathematics}, 41(1):155--177, 2002.
+
+\bibitem{Knyazev2001}
+Andrew~V. Knyazev.
+\newblock {Toward the Optimal Preconditioned Eigensolver: Locally Optimal Block
+  Preconditioned Conjugate Gradient Method}.
+\newblock {\em SIAM Journal on Scientific Computing}, 23(2):517--541, 2001.
+
+\end{thebibliography}
