@@ -1,5 +1,6 @@
-\contentsline {section}{\numberline {1}About Me}{1}
-\contentsline {section}{\numberline {2}Introduction}{2}
-\contentsline {section}{\numberline {3}Summary of Proposed Work}{2}
-\contentsline {section}{\numberline {4}Deliverables and Timeline}{4}
-\contentsline {section}{\numberline {5}Bibliography}{4}
+\contentsline {section}{\numberline {1}Abstract}{1}
+\contentsline {section}{\numberline {2}About Me}{1}
+\contentsline {section}{\numberline {3}Introduction}{2}
+\contentsline {section}{\numberline {4}Summary of Proposed Work}{3}
+\contentsline {section}{\numberline {5}Deliverables and Timeline}{4}
+\contentsline {section}{\numberline {6}Bibliography}{5}
